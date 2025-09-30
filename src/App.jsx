@@ -26,11 +26,15 @@ function App() {
     );
   };
 
+  const deleteTodo = (id) => {
+    setTodos(todos.filter((todo) => todo.id !== id));
+  };
+
   return (
     <div>
       <h1>Мій список завдань</h1>
       <AddTodoForm onAdd={addTodo} />
-      <TodoList todos={todos} onToggle={toggleTodo} />
+      <TodoList todos={todos} onToggle={toggleTodo} onDelete={deleteTodo} />
     </div>
   );
 }
