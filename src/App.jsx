@@ -9,10 +9,19 @@ function App() {
     { id: 3, text: "Підкорити світ", isCompleted: false },
   ]);
 
+  const addTodo = (text) => {
+    const newTodo = {
+      id: Date.now(),
+      text: text,
+      isCompleted: false,
+    };
+    setTodos([...todos, newTodo]);
+  };
+
   return (
     <div>
       <h1>Мій список завдань</h1>
-      <AddTodoForm />
+      <AddTodoForm onAdd={addTodo} />
       <TodoList todos={todos} />
     </div>
   );
