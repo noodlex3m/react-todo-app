@@ -18,11 +18,19 @@ function App() {
     setTodos([...todos, newTodo]);
   };
 
+  const toggleTodo = (id) => {
+    setTodos(
+      todos.map((todo) =>
+        todo.id === id ? { ...todo, isCompleted: !todo.isCompleted } : todo
+      )
+    );
+  };
+
   return (
     <div>
       <h1>Мій список завдань</h1>
       <AddTodoForm onAdd={addTodo} />
-      <TodoList todos={todos} />
+      <TodoList todos={todos} onToggle={toggleTodo} />
     </div>
   );
 }
